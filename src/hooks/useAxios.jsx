@@ -2,7 +2,7 @@ import axios from 'axios';
 
 
 export const useAxios = () => {
-	const access_token = '...'
+	const access_token = process.env.REACT_APP_GITHUB_TOKEN;
 
 	const files = []
 
