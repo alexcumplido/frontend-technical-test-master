@@ -1,28 +1,19 @@
-import axiosClient from "../services/axiosClient";
+import { getRepoDefaultBranch, getRepoTree } from "../clients/clientAxios";
 
 export const useAxios = () => {
+  const files = [];
   const TYPE_BLOB = "blob";
   const TYPE_TREE = "tree";
-  const files = [];
   
-  const getRepoDefaultBranch = async (repoUrl) => {
+  const recuseRepoTree = async (treeUrl) => {
     try {
-      const branch = await axiosClient.get(repoUrl);
-      return branch.data.default_branch;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const getRepoTree = async (treeUrl) => {
-    try {
-      const tree = await axiosClient.get(treeUrl);
-      for (const item of tree.data.tree) {
+      const tree = await getRepoTree(treeUrl);
+      for (const item of tree) {
         if (item.type === TYPE_BLOB) {
           const ext = item.path.split(".").pop();
           !!ext && files.push(ext);
         } else if (item.type === TYPE_TREE) {
-          await getRepoTree(item.url);
+          await recuseRepoTree(item.url);
         }
       }
     } catch (error) {
@@ -32,7 +23,7 @@ export const useAxios = () => {
 
   const getRepoData = async (repoUrl) => {
     const branch = await getRepoDefaultBranch(repoUrl);
-    await getRepoTree(`${repoUrl}/git/trees/${branch}`);
+    await recuseRepoTree(`${repoUrl}/git/trees/${branch}`);
     return files;
   };
 
