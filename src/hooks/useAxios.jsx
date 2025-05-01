@@ -26,8 +26,12 @@ export const useAxios = () => {
         },
       });
       for (const item of tree.data.tree) {
-        const ext = item.path.split(".").pop();
-        !!ext && files.push(ext);
+        if (item.type === "blob") {
+          const ext = item.path.split(".").pop();
+          !!ext && files.push(ext);
+        } else if (item.type === "tree") {
+          await getRepoTree(item.url);
+        }
       }
     } catch (error) {
       console.log(error);
