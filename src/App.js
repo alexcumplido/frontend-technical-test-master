@@ -2,6 +2,10 @@ import { useState, useEffect } from "react";
 import search from "./assets/images/search.svg";
 import { useAxios } from "./hooks/useAxios";
 import file from "./assets/images/file.svg";
+import { Header } from "./components/header/Header";
+import { Button } from "./components/button/Button";
+import { Input } from "./components/input/Input";
+import { List } from "./components/list/List";
 
 function App() {
   const [results, setResults] = useState([]);
@@ -28,34 +32,25 @@ function App() {
   }, [results]);
 
   return (
-    <div>
-      <header>
-        <h2>Github Extension Counter</h2>
-        <p>Añade la URL del repositorio que quieras analizar</p>
-      </header>
+    <section>
+      <Header> 
+      </Header> 
       <form onSubmit={handleSubmit}>
-        <input
-          value={inputValue}
-          onChange={(event) => setInputValue(event.target.value)}
-          placeholder="https://api.github.com/repos/[USER]/[REPO]"
-        />
-        <button type="submit">
-          <img src={search} width={21} height={21} alt="Buscar" />
-        </button>
+        <Input
+          value={inputValue} 
+          onChange={setInputValue} 
+          placeholder={"https://api.github.com/repos/[USER]/[REPO]"}
+        >
+        </Input>
+        <Button 
+          src={search}>
+        </Button>
       </form>
       <div>
-        {Object.keys(filteredList).length > 0 &&
-          Object.keys(filteredList).map((key, index) => (
-            <div key={index}>
-              <div>
-                <img src={file} width={50} height={40} alt="Buscar" />
-                <div>{key}</div>
-              </div>
-              <div>{filteredList[key]}</div>
-            </div>
-          ))}
+        <List elements={filteredList} src={file}>
+        </List>
       </div>
-    </div>
+    </section>
   );
 }
 
