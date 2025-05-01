@@ -5,7 +5,7 @@ export function List(props) {
                 Object.keys(props.elements).map((key, index) => (
                 <li key={index}>
                     <div>
-                        <img src={props.src} width={50} height={40} alt="Buscar" />
+                        {props.children}
                         <div>{key}</div>
                     </div>
                     <div>{props.elements[key]}</div>
