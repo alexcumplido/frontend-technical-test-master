@@ -5,7 +5,7 @@ export const useAxios = () => {
   const TYPE_BLOB = "blob";
   const TYPE_TREE = "tree";
   
-  const recuseRepoTree = async (treeUrl) => {
+  const recurseRepoTree = async (treeUrl) => {
     try {
       const tree = await getRepoTree(treeUrl);
       for (const item of tree) {
@@ -13,7 +13,7 @@ export const useAxios = () => {
           const ext = item.path.split(".").pop();
           !!ext && files.push(ext);
         } else if (item.type === TYPE_TREE) {
-          await recuseRepoTree(item.url);
+          await recurseRepoTree(item.url);
         }
       }
     } catch (error) {
@@ -23,7 +23,7 @@ export const useAxios = () => {
 
   const getRepoData = async (repoUrl) => {
     const branch = await getRepoDefaultBranch(repoUrl);
-    await recuseRepoTree(`${repoUrl}/git/trees/${branch}`);
+    await recurseRepoTree(`${repoUrl}/git/trees/${branch}`);
     return files;
   };
 
