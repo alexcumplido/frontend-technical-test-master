@@ -6,6 +6,7 @@ import { Header } from "./components/header/Header";
 import { Button } from "./components/button/Button";
 import { Input } from "./components/input/Input";
 import { List } from "./components/list/List";
+import { Icon } from "./components/icon/Icon";
 
 function App() {
   const [results, setResults] = useState([]);
@@ -33,21 +34,20 @@ function App() {
 
   return (
     <section>
-      <Header> 
-      </Header> 
+      <Header/> 
       <form onSubmit={handleSubmit}>
         <Input
           value={inputValue} 
           onChange={setInputValue} 
           placeholder={"https://api.github.com/repos/[USER]/[REPO]"}
-        >
-        </Input>
-        <Button 
-          src={search}>
+        />
+        <Button>
+          <Icon src={search} sizes={21}/>
         </Button>
       </form>
       <div>
-        <List elements={filteredList} src={file}>
+        <List elements={filteredList}>
+          <Icon src={file} sizes={50}/>
         </List>
       </div>
     </section>
