@@ -5,7 +5,7 @@ import { List } from "./components/list/List";
 import { validate } from "./services/clientValidator.js";
 import { Form } from "./components/form/Form";
 import { groupItems } from "./utils/groupItems.js";
-
+import { GITHUB_API_REPO_URL } from "./constants/constants.js";
 function App() {
   const [results, setResults] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
@@ -39,7 +39,7 @@ function App() {
         inputValue={inputValue}
         setInputValue={setInputValue}
         errorMessage={errorMessage}
-        placeholder={"https://api.github.com/repos/[USER]/[REPO]"}
+        placeholder={`${GITHUB_API_REPO_URL}/[USER]/[REPO]`}
         className={"form"}
       />
       <List elements={filteredList} className={"table-data"} />
