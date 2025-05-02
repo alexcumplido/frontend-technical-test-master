@@ -34,20 +34,20 @@ function App() {
 
   return (
     <section>
-      <Header/> 
+      <Header />
       <form onSubmit={handleSubmit}>
         <Input
-          value={inputValue} 
-          onChange={setInputValue} 
+          value={inputValue}
+          onChange={setInputValue}
           placeholder={"https://api.github.com/repos/[USER]/[REPO]"}
         />
         <Button>
-          <Icon src={search} sizes={21}/>
+          <Icon src={search} sizes={21} />
         </Button>
       </form>
       <div>
         <List elements={filteredList}>
-          <Icon src={file} sizes={50}/>
+          <Icon src={file} sizes={50} />
         </List>
       </div>
     </section>

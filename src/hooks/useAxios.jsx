@@ -4,7 +4,7 @@ export const useAxios = () => {
   const files = [];
   const TYPE_BLOB = "blob";
   const TYPE_TREE = "tree";
-  
+
   const recurseRepoTree = async (treeUrl) => {
     try {
       const tree = await getRepoTree(treeUrl);

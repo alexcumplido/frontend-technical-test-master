@@ -1,7 +1,3 @@
-export function Button (props) {
-    return (
-        <button type="submit">
-           {props.children}
-        </button>
-    )
+export function Button(props) {
+  return <button type="submit">{props.children}</button>;
 }
