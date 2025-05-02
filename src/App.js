@@ -37,25 +37,24 @@ function App() {
   }, [results]);
 
   return (
-    <section>
-      <Header />
-      <form onSubmit={handleSubmit}>
+    <section className="component">
+      <Header className={"header"} />
+      <form className="form" onSubmit={handleSubmit}>
         <Input
           value={inputValue}
           onChange={setInputValue}
           placeholder={"https://api.github.com/repos/[USER]/[REPO]"}
+          className={"form__input"}
         />
-        <InputError text={errorMessage} />
+        <InputError className={"form__error-show"} text={errorMessage} />
 
-        <Button>
-          <Icon src={search} sizes={21} />
+        <Button type={"submit"} className={"form__submit"}>
+          <Icon src={search} sizes={21} text={"Search"} />
         </Button>
       </form>
-      <div>
-        <List elements={filteredList}>
-          <Icon src={file} sizes={21} />
-        </List>
-      </div>
+      <List elements={filteredList} className={"table-data"}>
+        <Icon src={file} sizes={21} text={"Search"} />
+      </List>
     </section>
   );
 }
