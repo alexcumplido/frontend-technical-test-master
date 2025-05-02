@@ -1,16 +1,26 @@
 export function List(props) {
   return (
-    <ul>
-      {Object.keys(props.elements).length > 0 &&
-        Object.keys(props.elements).map((key, index) => (
-          <li key={index}>
-            <div>
-              {props.children}
-              <div>{key}</div>
-            </div>
-            <div>{props.elements[key]}</div>
-          </li>
-        ))}
-    </ul>
+    <table>
+      <thead>
+        <tr>
+          <th>File Extension</th>
+          <th>Repetitions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {Object.keys(props.elements).length > 0 &&
+          Object.keys(props.elements).map((key, index) => (
+            <tr key={index}>
+              <td>
+                <div>
+                  {props.children}
+                  <span>{key}</span>
+                </div>
+              </td>
+              <td>{props.elements[key]}</td>
+            </tr>
+          ))}
+      </tbody>
+    </table>
   );
 }
