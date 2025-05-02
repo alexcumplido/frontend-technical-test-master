@@ -1,10 +1,12 @@
-export function Input(props) {
+import "./input.css";
+
+export function Input({ value, placeholder, onChange, className }) {
   return (
     <input
-      value={props.inputValue}
-      onChange={(event) => props.onChange(event.target.value)}
-      placeholder={props.placeholder}
-      className={`${props.className || ""}`}
+      value={value}
+      onChange={(event) => onChange(event.target.value)}
+      placeholder={placeholder}
+      className={`${className}`}
     />
   );
 }

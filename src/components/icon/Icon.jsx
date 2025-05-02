@@ -1,10 +1,3 @@
-export function Icon(props) {
-  return (
-    <img
-      src={props.src}
-      width={props.sizes}
-      height={props.sizes}
-      alt={props.text}
-    />
-  );
+export function Icon({ src, sizes, text }) {
+  return <img src={src} width={sizes} height={sizes} alt={text} />;
 }

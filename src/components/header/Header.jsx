@@ -1,8 +1,10 @@
-export function Header(props) {
+import "./header.css";
+
+export function Header({ className, title, text }) {
   return (
-    <header className={`${props.className || ""}`}>
-      <h1>Github Extension Counter</h1>
-      <p>Añade la URL del repositorio que quieras analizar</p>
+    <header className={`${className || ""}`}>
+      <h1>{title}</h1>
+      <p>{text}</p>
     </header>
   );
 }

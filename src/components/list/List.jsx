@@ -1,4 +1,8 @@
-export function List(props) {
+import "./list.css";
+import file from "../../assets/images/file.svg";
+import { Icon } from "../icon/Icon";
+export function List({ elements, className }) {
+  const extensions = Object.keys(elements);
   return (
     <table>
       <thead>
@@ -8,20 +12,23 @@ export function List(props) {
         </tr>
       </thead>
       <tbody>
-        {Object.keys(props.elements).length > 0 &&
-          Object.keys(props.elements).map((key, index) => (
+        {extensions.length > 0 ? (
+          extensions.map((key, index) => (
             <tr key={index}>
-              <td className={`${props.className || ""}`}>
+              <td className={`${className || ""}`}>
                 <div>
-                  {props.children}
+                  <Icon src={file} sizes={21} text={"Search"} />
                   <span>{key}</span>
                 </div>
               </td>
-              <td className={`${props.className || ""}`}>
-                {props.elements[key]}
-              </td>
+              <td className={`${className || ""}`}>{elements[key]}</td>
             </tr>
-          ))}
+          ))
+        ) : (
+          <tr>
+            <td className={`${className || ""}`}>No results</td>
+          </tr>
+        )}
       </tbody>
     </table>
   );

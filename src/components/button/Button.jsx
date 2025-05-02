@@ -1,7 +1,9 @@
-export function Button(props) {
+import "./button.css";
+
+export function Button({ type, className, children }) {
   return (
-    <button type={props.type} className={`${props.className || ""}`}>
-      {props.children}
+    <button type={type} className={`${className || ""}`}>
+      {children}
     </button>
   );
 }

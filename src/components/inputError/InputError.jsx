@@ -1,3 +1,3 @@
-export function InputError(props) {
-  return <span className={`${props.className || ""}`}>{props.text}</span>;
+export function InputError({ className, text }) {
+  return <span className={`${className || ""}`}>{text}</span>;
 }
