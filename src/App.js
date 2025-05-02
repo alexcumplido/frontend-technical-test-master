@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { useAxios } from "./hooks/useAxios";
 import { Header } from "./components/header/Header";
 import { List } from "./components/list/List";
-import { validate } from "./clients/clientValidator";
+import { validate } from "./services/clientValidator.js";
 import { Form } from "./components/form/Form";
+import { groupItems } from "./utils/groupItems.js";
 
 function App() {
   const [results, setResults] = useState([]);
@@ -19,16 +20,11 @@ function App() {
     }
   };
 
-  const groupItems = (items) => {
-    const uniqs = items.reduce((acc, val) => {
-      acc[val] = acc[val] === undefined ? 1 : (acc[val] += 1);
-      return acc;
-    }, {});
-    setFilteredList(uniqs);
-  };
-
   useEffect(() => {
-    results.length > 0 && groupItems(results);
+    if (results.length > 0) {
+      const grouped = groupItems(results);
+      setFilteredList(grouped);
+    }
   }, [results]);
 
   return (
