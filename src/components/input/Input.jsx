@@ -4,6 +4,7 @@ export function Input(props) {
       value={props.inputValue}
       onChange={(event) => props.onChange(event.target.value)}
       placeholder={props.placeholder}
+      className={`${props.className || ""}`}
     />
   );
 }

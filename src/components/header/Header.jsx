@@ -1,7 +1,7 @@
-export function Header() {
+export function Header(props) {
   return (
-    <header>
-      <h2>Github Extension Counter</h2>
+    <header className={`${props.className || ""}`}>
+      <h1>Github Extension Counter</h1>
       <p>Añade la URL del repositorio que quieras analizar</p>
     </header>
   );

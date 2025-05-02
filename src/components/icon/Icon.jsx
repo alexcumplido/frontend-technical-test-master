@@ -4,7 +4,7 @@ export function Icon(props) {
       src={props.src}
       width={props.sizes}
       height={props.sizes}
-      alt={"Buscar"}
+      alt={props.text}
     />
   );
 }

@@ -11,13 +11,15 @@ export function List(props) {
         {Object.keys(props.elements).length > 0 &&
           Object.keys(props.elements).map((key, index) => (
             <tr key={index}>
-              <td>
+              <td className={`${props.className || ""}`}>
                 <div>
                   {props.children}
                   <span>{key}</span>
                 </div>
               </td>
-              <td>{props.elements[key]}</td>
+              <td className={`${props.className || ""}`}>
+                {props.elements[key]}
+              </td>
             </tr>
           ))}
       </tbody>

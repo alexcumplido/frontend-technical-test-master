@@ -1,3 +1,7 @@
 export function Button(props) {
-  return <button type="submit">{props.children}</button>;
+  return (
+    <button type={props.type} className={`${props.className || ""}`}>
+      {props.children}
+    </button>
+  );
 }
