@@ -9,15 +9,10 @@
     "react-scripts": "5.0.0"
   },
   "scripts": {
+    "format": "prettier --write \"src/**/*.{js,jsx,css,html}\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "browserslist": {
     "production": [
@@ -30,5 +25,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3"
   }
 }
