@@ -1,10 +1,8 @@
-import { getRepoDefaultBranch, getRepoTree } from "../clients/clientAxios";
-
+import { getRepoDefaultBranch } from "../requests/getRepoDefaultBranch.js";
+import { getRepoTree } from "../requests/getRepoTree.js";
+import { TYPE_BLOB, TYPE_TREE } from "../constants/constants.js";
 export const useAxios = () => {
   const files = [];
-  const TYPE_BLOB = "blob";
-  const TYPE_TREE = "tree";
-
   const recurseRepoTree = async (treeUrl) => {
     try {
       const tree = await getRepoTree(treeUrl);
