@@ -53,7 +53,7 @@ function App() {
       </form>
       <div>
         <List elements={filteredList}>
-          <Icon src={file} sizes={50} />
+          <Icon src={file} sizes={21} />
         </List>
       </div>
     </section>
