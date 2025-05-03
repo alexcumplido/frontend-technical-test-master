@@ -19,7 +19,7 @@ function App() {
       setErrorMessage("");
       getRepoData(inputValue).then((results) => setResults(results));
     } else {
-      setError("Is Not Valid URL");
+      setErrorMessage("Is Not Valid URL");
     }
   };
 
