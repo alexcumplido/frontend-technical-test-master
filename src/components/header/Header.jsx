@@ -1,10 +1,10 @@
 import "./header.css";
 
-export function Header({ className, title, text }) {
+export function Header({ className, content }) {
   return (
-    <header className={`${className || ""}`}>
-      <h1>{title}</h1>
-      <p>{text}</p>
+    <header className={className.header}>
+      <h1 className={className.title}>{content.title}</h1>
+      <p>{content.description}</p>
     </header>
   );
 }

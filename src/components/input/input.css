@@ -1,4 +1,5 @@
 .form__input {
+  flex: 1;
   padding: 1rem;
   border: none;
   border-radius: 1rem;
@@ -9,4 +10,10 @@
 
 .form__input::placeholder {
   color: var(--clr-primary-100);
+}
+
+@media screen and (min-width: 540px) {
+  .form__input {
+    flex-basis: 60%;
+  }
 }
