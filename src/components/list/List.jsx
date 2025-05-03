@@ -4,11 +4,11 @@ import { Icon } from "../icon/Icon";
 export function List({ elements, className }) {
   const extensions = Object.keys(elements);
   return (
-    <table>
+    <table className={"table"}>
       <thead>
         <tr>
           <th>File Extension</th>
-          <th>Repetitions</th>
+          <th>Number of files</th>
         </tr>
       </thead>
       <tbody>

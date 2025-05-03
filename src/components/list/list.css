@@ -1,3 +1,11 @@
+.table {
+  padding: 1rem;
+  border: none;
+  border-radius: 1rem;
+  color: var(--clr-primaryDarkMode-900);
+  background-color: var(--clr-primary-200);
+}
+
 .table-data {
   text-align: center;
 }
