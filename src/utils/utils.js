@@ -4,3 +4,5 @@ export const groupItems = (items) => {
     return acc;
   }, {});
 };
+
+export const getFileExtension = (item) => item.path.split(".").pop();
