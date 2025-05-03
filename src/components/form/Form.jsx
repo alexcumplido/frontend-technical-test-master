@@ -4,6 +4,7 @@ import { Icon } from "../icon/Icon";
 import { InputError } from "../inputError/InputError";
 import search from "../../assets/images/search.svg";
 import "./form.css";
+
 export function Form({
   handleSubmit,
   inputValue,
@@ -13,16 +14,16 @@ export function Form({
   className,
 }) {
   return (
-    <form className={className} onSubmit={handleSubmit}>
+    <form className={className.form} onSubmit={handleSubmit}>
       <Input
         value={inputValue}
         onChange={setInputValue}
         placeholder={placeholder}
-        className={`${className}__input`}
+        className={className.input}
       />
-      <InputError className={`${className}__error-show`} text={errorMessage} />
+      <InputError className={className.error} text={errorMessage} />
 
-      <Button type={"submit"} className={`${className}__submit`}>
+      <Button type={"submit"} className={className.button}>
         <Icon src={search} sizes={21} text={"Search"} />
       </Button>
     </form>

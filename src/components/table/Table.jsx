@@ -1,10 +1,11 @@
-import "./list.css";
+import "./table.css";
 import file from "../../assets/images/file.svg";
 import { Icon } from "../icon/Icon";
+
 export function List({ elements, className }) {
   const extensions = Object.keys(elements);
   return (
-    <table className={"table"}>
+    <table className={className.table}>
       <thead>
         <tr>
           <th>File Extension</th>
@@ -15,18 +16,18 @@ export function List({ elements, className }) {
         {extensions.length > 0 ? (
           extensions.map((key, index) => (
             <tr key={index}>
-              <td className={`${className || ""}`}>
-                <div>
+              <td className={className.tableData}>
+                <div className={className.tableDataContainer}>
                   <Icon src={file} sizes={21} text={"Search"} />
                   <span>{key}</span>
                 </div>
               </td>
-              <td className={`${className || ""}`}>{elements[key]}</td>
+              <td className={className.tableData}>{elements[key]}</td>
             </tr>
           ))
         ) : (
           <tr>
-            <td className={`${className || ""}`}>No results</td>
+            <td className={className.tableData}>No results</td>
           </tr>
         )}
       </tbody>

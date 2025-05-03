@@ -6,11 +6,11 @@
   background-color: var(--clr-primary-200);
 }
 
-.table-data {
+.table__data {
   text-align: center;
 }
 
-.table-data > div {
+.table__data-container {
   display: flex;
   align-items: center;
   gap: 1rem;
