@@ -15,8 +15,11 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (validate(inputValue, setErrorMessage)) {
+    if (validate(inputValue)) {
+      setErrorMessage("");
       getRepoData(inputValue).then((results) => setResults(results));
+    } else {
+      setError("Is Not Valid URL");
     }
   };
 
