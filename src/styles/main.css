@@ -96,13 +96,14 @@ body {
   max-width: var(--max-width-desktop);
   margin-inline: auto;
   display: grid;
-  place-items: center;
+  place-items: center center; /* Center horizontally and vertically */
   padding: 1rem;
   font-size: var(--fs-body);
   font-family: var(--ff-primary);
   line-height: var(--lh);
   color: var(--clr-primary-200);
   background-color: var(--clr-primaryDarkMode-900);
+  padding-bottom: 25%; /* Push the element down to the lower half of the upper half */
 }
 
 ul {
