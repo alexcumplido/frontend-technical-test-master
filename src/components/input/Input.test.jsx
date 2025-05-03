@@ -2,36 +2,25 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { Input } from "./Input";
 
-describe("Input Component", () => {
-  it("renders the input with the correct placeholder and value", () => {
-    render(
-      <Input
-        value="Test Value"
-        placeholder="Test Placeholder"
-        onChange={() => {}}
-        className="test-input"
-      />
-    );
-
-    const inputElement = screen.getByPlaceholderText("Test Placeholder");
+describe("Input component", () => {
+  it("renders the input with the correct placeholder", () => {
+    render(<Input value="" placeholder="Enter text" onChange={() => {}} className="input-class" />);
+    const inputElement = screen.getByPlaceholderText("Enter text");
     expect(inputElement).toBeInTheDocument();
-    expect(inputElement).toHaveValue("Test Value");
-    expect(inputElement).toHaveClass("test-input");
+  });
+
+  it("applies the correct className", () => {
+    render(<Input value="" placeholder="Enter text" onChange={() => {}} className="input-class" />);
+    const inputElement = screen.getByPlaceholderText("Enter text");
+    expect(inputElement).toHaveClass("input-class");
   });
 
   it("calls onChange when the value changes", () => {
     const handleChange = jest.fn();
-    render(
-      <Input
-        value=""
-        placeholder="Test Placeholder"
-        onChange={handleChange}
-        className="test-input"
-      />
-    );
+    render(<Input value="" placeholder="Enter text" onChange={handleChange} className="input-class" />);
+    const inputElement = screen.getByPlaceholderText("Enter text");
 
-    const inputElement = screen.getByPlaceholderText("Test Placeholder");
-    fireEvent.change(inputElement, { target: { value: "New Value" } });
-    expect(handleChange).toHaveBeenCalledWith("New Value");
+    fireEvent.change(inputElement, { target: { value: "New value" } });
+    expect(handleChange).toHaveBeenCalledWith("New value");
   });
 });

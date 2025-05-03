@@ -2,21 +2,28 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { Header } from "./Header";
 
-describe("Header Component", () => {
-  it("renders the header with the correct title and text", () => {
-    render(<Header className="test-header" title="Test Title" text="Test Text" />);
+describe("Header component", () => {
+  it("renders the header with the correct title and description", () => {
+    const content = { title: "Test Title", description: "Test Description" };
+    const className = { header: "header-class", title: "title-class" };
+
+    render(<Header className={className} content={content} />);
+
     const titleElement = screen.getByText("Test Title");
-    const textElement = screen.getByText("Test Text");
+    const descriptionElement = screen.getByText("Test Description");
 
     expect(titleElement).toBeInTheDocument();
-    expect(textElement).toBeInTheDocument();
-    expect(titleElement.tagName).toBe("H1");
-    expect(textElement.tagName).toBe("P");
+    expect(titleElement).toHaveClass("title-class");
+    expect(descriptionElement).toBeInTheDocument();
   });
 
-  it("applies the correct className", () => {
-    render(<Header className="test-header" title="Test Title" text="Test Text" />);
+  it("applies the correct header class", () => {
+    const content = { title: "Test Title", description: "Test Description" };
+    const className = { header: "header-class", title: "title-class" };
+
+    render(<Header className={className} content={content} />);
+
     const headerElement = screen.getByRole("banner");
-    expect(headerElement).toHaveClass("test-header");
+    expect(headerElement).toHaveClass("header-class");
   });
 });

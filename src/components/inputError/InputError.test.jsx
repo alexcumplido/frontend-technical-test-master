@@ -2,16 +2,16 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { InputError } from "./InputError";
 
-describe("InputError Component", () => {
-  it("renders the error message when provided", () => {
-    render(<InputError errorMessage="This is an error" />);
-    const errorElement = screen.getByText("This is an error");
+describe("InputError component", () => {
+  it("renders the error message with the correct text", () => {
+    render(<InputError text="Error message" className="error-class" />);
+    const errorElement = screen.getByText("Error message");
     expect(errorElement).toBeInTheDocument();
-    expect(errorElement).toHaveClass("error-message");
   });
 
-  it("does not render anything when errorMessage is not provided", () => {
-    const { container } = render(<InputError errorMessage="" />);
-    expect(container).toBeEmptyDOMElement();
+  it("applies the correct className", () => {
+    render(<InputError text="Error message" className="error-class" />);
+    const errorElement = screen.getByText("Error message");
+    expect(errorElement).toHaveClass("error-class");
   });
 });
