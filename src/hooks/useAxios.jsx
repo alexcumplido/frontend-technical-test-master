@@ -1,6 +1,7 @@
 import { getRepoDefaultBranch } from "../requests/getRepoDefaultBranch.js";
 import { getRepoTree } from "../requests/getRepoTree.js";
 import { TYPE_BLOB, TYPE_TREE } from "../constants/constants.js";
+import { getFileExtension } from "../utils/utils.js";
 export const useAxios = () => {
   const files = [];
   const recurseRepoTree = async (treeUrl) => {
@@ -8,7 +9,7 @@ export const useAxios = () => {
       const tree = await getRepoTree(treeUrl);
       for (const item of tree) {
         if (item.type === TYPE_BLOB) {
-          const ext = item.path.split(".").pop();
+          const ext = getFileExtension(item);
           !!ext && files.push(ext);
         } else if (item.type === TYPE_TREE) {
           await recurseRepoTree(item.url);
