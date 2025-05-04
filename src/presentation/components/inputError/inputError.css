@@ -2,6 +2,7 @@
   display: block;
   position: absolute;
   right: 6rem;
+  bottom: -0.5rem;
   color: var(--clr-primary-100);
   font-weight: var(--fw-bold);
   background-color: var(--clr-accent-400);
