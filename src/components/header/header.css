@@ -1,9 +1,0 @@
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.header__title {
-  font-size: var(--fs-300);
-}
