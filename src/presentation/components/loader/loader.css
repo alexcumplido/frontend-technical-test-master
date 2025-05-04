@@ -1,0 +1,19 @@
+.loader {
+  align-self: center;
+  justify-self: center;
+  margin: 0 auto;
+  width: 5rem;
+  overflow: visible;
+}
+
+.loader circle {
+  stroke: var(--clr-accentDarkMode-300);
+  transform-origin: 50px 50px;
+  animation: spin 1.2s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
