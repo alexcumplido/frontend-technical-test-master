@@ -5,6 +5,6 @@ export const getRepoDefaultBranch = async (repoUrl) => {
     const branch = await clientAxios.get(repoUrl);
     return branch.data.default_branch;
   } catch (error) {
-    throw new Error(`Error: ${error}`);
+    return error.response ? error.response.status : null;
   }
 };
