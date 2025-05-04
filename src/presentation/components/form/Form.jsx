@@ -3,6 +3,7 @@ import { Button } from "../button/Button";
 import { Icon } from "../icon/Icon";
 import { InputError } from "../inputError/InputError";
 import search from "../../../assets/images/search.svg";
+import { GITHUB_API_PLACHOLDER } from "../../../infrastructure/constants/constants.js";
 import "./form.css";
 
 export function Form({
@@ -21,7 +22,13 @@ export function Form({
         placeholder={placeholder}
         className={className.input}
       />
-      <InputError className={className.error} text={errorMessage} />
+
+      {errorMessage && (
+        <InputError
+          className={className.error}
+          text={`Enter a valid url format: ${GITHUB_API_PLACHOLDER}`}
+        />
+      )}
 
       <Button type={"submit"} className={className.button}>
         <Icon src={search} sizes={21} text={"Search"} />
