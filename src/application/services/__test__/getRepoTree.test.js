@@ -1,7 +1,7 @@
 import { getRepoTree } from "../getRepoTree";
-import { clientAxios } from "../clientAxios";
+import { clientAxios } from "../../../infrastructure/api/clientAxios";
 
-jest.mock("../clientAxios");
+jest.mock("../../../infrastructure/api/clientAxios.js");
 
 describe("getRepoTree", () => {
   it("should return the tree data when the request is successful", async () => {

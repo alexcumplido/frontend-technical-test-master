@@ -1,7 +1,7 @@
 import { getRepoDefaultBranch } from "../getRepoDefaultBranch";
-import { clientAxios } from "../clientAxios";
+import { clientAxios } from "../../../infrastructure/api/clientAxios";
 
-jest.mock("../clientAxios");
+jest.mock("../../../infrastructure/api/clientAxios.js");
 
 describe("getRepoDefaultBranch", () => {
   it("should return the default branch when the request is successful", async () => {

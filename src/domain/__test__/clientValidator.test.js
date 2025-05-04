@@ -1,5 +1,5 @@
-import { validate } from "../clientValidator";
-import { GITHUB_API_REPO_URL } from "../../constants/constants";
+import { validate } from "././../clientValidator";
+import { GITHUB_API_REPO_URL } from "../../infrastructure/constants/constants";
 
 describe("validate function", () => {
   it("should return true for a valid GitHub API repository URL", () => {
