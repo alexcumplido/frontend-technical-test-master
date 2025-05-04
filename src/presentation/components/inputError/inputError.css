@@ -1,0 +1,14 @@
+.form__error-show {
+  display: block;
+  position: absolute;
+  right: 6rem;
+  color: var(--clr-primary-100);
+  font-weight: var(--fw-bold);
+  background-color: var(--clr-accent-400);
+
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: var(--fs-200);
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+}
