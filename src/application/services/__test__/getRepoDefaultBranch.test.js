@@ -18,13 +18,23 @@ describe("getRepoDefaultBranch", () => {
     );
   });
 
-  it("should throw an error when the request fails", async () => {
-    clientAxios.get.mockRejectedValue(new Error("Request failed"));
+  it("should return null when the request fails with no response", async () => {
+    clientAxios.get.mockRejectedValue({ response: null });
 
-    await expect(
-      getRepoDefaultBranch(
-        "https://api.github.com/repos/alexcumplido/yoga-api",
-      ),
-    ).rejects.toThrow("Error: Error: Request failed");
+    const result = await getRepoDefaultBranch(
+      "https://api.github.com/repos/alex/yoga-api",
+    );
+
+    expect(result).toBeNull();
+  });
+
+  it("should return 404 when the request fails with a 404 status code", async () => {
+    clientAxios.get.mockRejectedValue({ response: { status: 404 } });
+
+    const result = await getRepoDefaultBranch(
+      "https://api.github.com/repos/alex/yoga-api",
+    );
+
+    expect(result).toBe(404);
   });
 });
