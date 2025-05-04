@@ -1,6 +1,9 @@
 import { getRepoDefaultBranch } from "../services/getRepoDefaultBranch.js";
 import { getRepoTree } from "../services/getRepoTree.js";
-import { TYPE_BLOB, TYPE_TREE } from "../../infrastructure/constants/constants.js";
+import {
+  TYPE_BLOB,
+  TYPE_TREE,
+} from "../../infrastructure/constants/constants.js";
 import { getFileExtension } from "../../domain/utils/utils.js";
 export const useAxios = () => {
   const files = [];
@@ -22,6 +25,7 @@ export const useAxios = () => {
 
   const getRepoData = async (repoUrl) => {
     const branch = await getRepoDefaultBranch(repoUrl);
+    if (branch === 404 || branch === null) return files;
     await recurseRepoTree(`${repoUrl}/git/trees/${branch}`);
     return files;
   };
