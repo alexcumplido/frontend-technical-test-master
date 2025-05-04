@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { useAxios } from "./hooks/useAxios";
-import { Header } from "./components/header/Header";
-import { List } from "./components/table/Table.jsx";
-import { validate } from "./services/clientValidator.js";
-import { Form } from "./components/form/Form";
-import { groupItems } from "./utils/utils.js";
-import { GITHUB_API_PLACHOLDER } from "./constants/constants.js";
+import { useAxios } from "./application/hooks/useAxios.jsx";
+import { Header } from "./presentation/components/header/Header.jsx"; //import { Header } from "./components/header/Header";
+import { List } from "./presentation/components/table/Table.jsx";
+import { validate } from "./domain/clientValidator.js";
+import { Form } from "./presentation/components/form/Form";
+import { groupItems } from "./domain/utils/utils.js";
+import { GITHUB_API_PLACHOLDER } from "./infrastructure/constants/constants.js";
 function App() {
   const [results, setResults] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");

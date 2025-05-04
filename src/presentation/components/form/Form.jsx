@@ -2,7 +2,7 @@ import { Input } from "../input/Input";
 import { Button } from "../button/Button";
 import { Icon } from "../icon/Icon";
 import { InputError } from "../inputError/InputError";
-import search from "../../assets/images/search.svg";
+import search from "../../../assets/images/search.svg";
 import "./form.css";
 
 export function Form({

@@ -1,4 +1,4 @@
-import { clientAxios } from "./clientAxios.js";
+import { clientAxios } from "../../infrastructure/api/clientAxios.js";
 
 export const getRepoTree = async (treeUrl) => {
   try {

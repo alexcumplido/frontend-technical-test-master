@@ -1,5 +1,5 @@
 import "./table.css";
-import file from "../../assets/images/file.svg";
+import file from "../../../assets/images/file.svg";
 import { Icon } from "../icon/Icon";
 
 export function List({ elements, className }) {

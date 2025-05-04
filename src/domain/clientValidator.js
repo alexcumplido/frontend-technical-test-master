@@ -1,5 +1,5 @@
 import validator from "validator";
-import { GITHUB_API_REPO_URL } from "../constants/constants";
+import { GITHUB_API_REPO_URL } from "../infrastructure/constants/constants.js";
 export const validate = (value) => {
   const isValidUrl = validator.isURL(value, {
     protocols: ["https"],

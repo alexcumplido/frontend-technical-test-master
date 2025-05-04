@@ -1,7 +1,7 @@
-import { getRepoDefaultBranch } from "../requests/getRepoDefaultBranch.js";
-import { getRepoTree } from "../requests/getRepoTree.js";
-import { TYPE_BLOB, TYPE_TREE } from "../constants/constants.js";
-import { getFileExtension } from "../utils/utils.js";
+import { getRepoDefaultBranch } from "../services/getRepoDefaultBranch.js";
+import { getRepoTree } from "../services/getRepoTree.js";
+import { TYPE_BLOB, TYPE_TREE } from "../../infrastructure/constants/constants.js";
+import { getFileExtension } from "../../domain/utils/utils.js";
 export const useAxios = () => {
   const files = [];
   const recurseRepoTree = async (treeUrl) => {
