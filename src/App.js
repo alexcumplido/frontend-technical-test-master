@@ -1,25 +1,29 @@
 import { useState, useEffect } from "react";
 import { useAxios } from "./application/hooks/useAxios.jsx";
-import { Header } from "./presentation/components/header/Header.jsx"; //import { Header } from "./components/header/Header";
+import { Header } from "./presentation/components/header/Header.jsx";
 import { List } from "./presentation/components/table/Table.jsx";
-import { validate } from "./domain/clientValidator.js";
 import { Form } from "./presentation/components/form/Form";
 import { groupItems } from "./domain/utils/utils.js";
 import { GITHUB_API_PLACHOLDER } from "./infrastructure/constants/constants.js";
+import { Loader } from "./presentation/components/loader/Loader.jsx";
+import { validateInput } from "./domain/utils/inputValidate.js";
 function App() {
   const [results, setResults] = useState([]);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const { getRepoData } = useAxios();
   const [filteredList, setFilteredList] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (validate(inputValue)) {
-      setErrorMessage("");
-      getRepoData(inputValue).then((results) => setResults(results));
-    } else {
-      setErrorMessage("Not a valid URL");
+    if (validateInput(inputValue, setErrorMessage)) {
+      setResults([]);
+      setFilteredList({});
+      setLoading(true);
+      getRepoData(inputValue)
+        .then((results) => setResults(results))
+        .finally(() => setLoading(false));
     }
   };
 
@@ -55,14 +59,18 @@ function App() {
           error: "form__error-show",
         }}
       />
-      <List
-        elements={filteredList}
-        className={{
-          table: "table",
-          tableData: "table__data",
-          tableDataContainer: "table__data-container",
-        }}
-      />
+      {loading ? (
+        <Loader className={"loader"} />
+      ) : (
+        <List
+          elements={filteredList}
+          className={{
+            table: "table",
+            tableData: "table__data",
+            tableDataContainer: "table__data-container",
+          }}
+        />
+      )}
     </section>
   );
 }
